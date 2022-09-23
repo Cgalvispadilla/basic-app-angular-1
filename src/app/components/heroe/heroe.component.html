@@ -1,0 +1,42 @@
+<h1 class="animated fadeIn">
+  {{ heroe.nombre | uppercase }}
+  <small>({{ heroe.aparicion | date:'y' }})</small>
+</h1>
+
+<div class="container animated fadeIn fast">
+  <div class="row">
+    <div class="col-md-4">
+      <img [src]="heroe.img" class="img-fluid" alt="{{ heroe.nombre }}" />
+      <br /><br />
+      <div class="d-grid gap-2">
+        <button (click)="regresar()" class="btn btn-outline-primary">
+          Regresar
+        </button>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h3>{{ heroe.nombre }}</h3>
+      <hr />
+      <p>{{ heroe.bio }}</p>
+      <br />
+      <br />
+      <div [ngSwitch]="heroe.casa">
+        <p *ngSwitchCase="'DC'">
+          Este heroe es de DC, DC Comics es una editorial de cómics
+          estadounidense. Forma parte de DC Entertainment, una de las empresas
+          que conforman Warner Bros. Entertainment, la cual a su vez es
+          propiedad de Warner Bros. Discovery. Fue fundada en 1934 bajo el
+          nombre National Allied Publications, para luego tomar el nombre de DC
+          Comics en 1937.
+        </p>
+        <p *ngSwitchCase="'Marvel'">
+          Este heroe es de Marvel, Marvel Comics es una editorial de cómics
+          estadounidense, propiedad de Marvel Entertainment, una subsidiaria de
+          Disney. Fue fundada en 1939 por Martin Goodman, con el nombre de
+          Timely Comics, y en 1961 cambió su nombre a Marvel Comics.
+        </p>
+        <p *ngSwitchDefault>Para este heroe desconocemos la casa.</p>
+      </div>
+    </div>
+  </div>
+</div>
